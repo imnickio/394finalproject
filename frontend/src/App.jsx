@@ -11,10 +11,13 @@ function App() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "https://final-project-api-yury.onrender.com/api/login",
+        {
+          username,
+          password,
+        },
+      );
       setToken(response.data.token);
       setError("");
       alert("Logged in successfully!");
@@ -25,9 +28,12 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/data", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        "https://final-project-api-yury.onrender.com/api/data",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       setData(response.data);
     } catch (err) {
       setError("Fetch Failed: 401 Unauthorized - You must log in first!");
